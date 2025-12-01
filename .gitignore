@@ -1,0 +1,21 @@
+# Advent of Code inputs (not allowed to share per AoC rules)
+input.txt
+*.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
