@@ -1,19 +1,23 @@
 # Advent of Code 2025 - Day 01
 
-def read_input():
-    with open("input.txt") as f:
-        return f.read().strip()
+def part1():
+    lines = open("input.txt").read().splitlines() # 1. 일단 입력 input 데이터 읽기
+    start = 50 # 2. 시작 위치는 50
+    count = 0
 
-def part1(data):
-    # TODO: Implement part 1
-    pass
+    for line in lines: # R10 L30
+        부호 = (line[0] == 'L') # 3. 현재 num에서 # 4-1. R(왼쪽)이면 그 숫자만큼 - # 4-2. L(오른쪽)이면 그 숫자만큼 +
+        number = int(line[1:])
 
-def part2(data):
-    # TODO: Implement part 2
-    pass
+        if 부호:  # L이면 True
+            start = (start - number) % 100
+        else:  # R이면 False
+            start = (start + number) % 100
+
+        # 4-3. 더한 다음에 그 결과가 0이면 check 변수에 +1
+        if start == 0:
+            count += 1
+    return count
 
 if __name__ == "__main__":
-    data = read_input()
-
-    print("Part 1:", part1(data))
-    print("Part 2:", part2(data))
+    print(f'정답: {part1()}')
