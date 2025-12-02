@@ -1,6 +1,7 @@
 # Advent of Code inputs (not allowed to share per AoC rules)
 input.txt
 *.txt
+problem.*
 
 # Python
 __pycache__/
