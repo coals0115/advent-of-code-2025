@@ -5,7 +5,7 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025)
 ## Progress
 
 | Day | Part 1 | Part 2 |
-|-----|--------|--------|
+| --- | ------ | ------ |
 | 01  |        |        |
 | 02  |        |        |
 | 03  |        |        |
@@ -34,7 +34,8 @@ My solutions for [Advent of Code 2025](https://adventofcode.com/2025)
 
 ## Language
 
-Python 3
+- Python 3
+- JavaScript
 
 ## Note
 
