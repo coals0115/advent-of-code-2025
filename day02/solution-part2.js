@@ -24,8 +24,5 @@ function solution(ranges) {
     }
   }
 
-  console.log(sillies);
   return sillies.reduce((acc, curr) => (acc += curr), 0);
 }
-
-console.log(solution(ranges));
