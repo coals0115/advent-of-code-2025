@@ -19,5 +19,26 @@ def part1():
             count += 1
     return count
 
+def part2():
+    lines = open("input.txt").read().splitlines()
+    start = 50
+    count = 0
+
+    for line in lines: # R10 L30
+        부호 = (line[0] == 'L')
+        number = int(line[1:])
+
+        # 1. 1칸씩 number번 이동하면서 매번 0인지 체크
+        for i in range(number):
+            if 부호:
+                start = (start - 1) % 10 # 왼쪽으로 1칸 이동
+            else:
+                start = (start + 1) % 100 # 오른쪽으로 1칸 이동
+
+            if start == 0: # 2. 이동 중에 0을 지나가면 카운트
+                count += 1
+    return count
+
 if __name__ == "__main__":
     print(f'정답: {part1()}')
+    print(f'정답: {part2()}')
