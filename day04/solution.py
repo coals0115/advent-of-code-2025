@@ -1,8 +1,6 @@
-def part1():
-    grid = open("input.txt").read().splitlines()
-    count = 0
-
-    # 3. grid 모든 칸을 돌면서
+def 접근_가능한_롤_찾기(grid):
+    """접근 가능한 롤(@) 위치들 반환 (인접 롤이 3개 이하인 것들)"""
+    result = []
     for row in range(len(grid)):
         for col in range(len(grid[row])):
             # 4. 그 칸이 @(종이 롤)이면
@@ -12,9 +10,13 @@ def part1():
 
                 # 6. 3개 이하면 접근 ㄱㄴ
                 if 인접_개수 < 4:
-                    count += 1
+                    result.append((row, col))
+    return result
 
-    print(count)
+
+def part1():
+    grid = open("input.txt").read().splitlines()
+    print(len(접근_가능한_롤_찾기(grid)))
 
 
 # 8방향: 좌상, 상, 우상, 좌, 우, 좌하, 하, 우하
@@ -43,5 +45,27 @@ def 인접_롤_확인(grid, row, col):
 
     return count
 
+def part2():
+    grid = [list(line) for line in open("input.txt").read().splitlines()]
+
+    총_제거_개수 = 0
+
+    # 1. 제거할 게 없을 때까지 무한반복
+    while True:
+        제거할_롤들 = 접근_가능한_롤_찾기(grid)
+
+        # 2. 이번 반복에서 제거할 롤이 없으면 break
+        if not 제거할_롤들:
+            break
+
+        # 3. 제거할 롤들 한꺼번에 제거 @ -> .
+        for row, col in 제거할_롤들:
+            grid[row][col] = "."
+
+        총_제거_개수 += len(제거할_롤들)
+
+    print(총_제거_개수)
+
+
 if __name__ == "__main__":
-    part1()
+    part2()
