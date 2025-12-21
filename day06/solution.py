@@ -24,9 +24,55 @@ def part1():
         result = eval(f' {operation} '.join(nums))
         total += result
 
-    print(total)
+    return total
+
+
+def part2():
+    lines = open("input.txt").read().split("\n")
+
+    # 2. 줄 길이 맞추기 (짧은 줄은 공백으로 채움)
+    max_len = max(len(line) for line in lines)
+    lines = [line.ljust(max_len) for line in lines]
+
+    number = ""
+    problem = []
+    all_problems = []
+
+    # 3. range(마지막인덱스, -1, -1) >> 역순으로 둘기
+    for col in range(len(lines[0]) - 1, -1, -1):
+        # 4. 위 -> 아래로 행 돌기
+        for row in range(len(lines)):
+            char = lines[row][col]
+            if char != " ":
+                number += char
+
+        # 5. 열 하나가 끝나는 시점.. 여기서 숫자들 다 더하기..
+        if number != "":
+            # 마지막 글자가 연산자면 문제 하나 완성
+            if number[-1] in "*+":
+                연산자 = number[-1]
+                숫자부분 = number[:-1]
+
+                # problem에 추가
+                problem.append(숫자부분)
+
+                # 문제 하나 완성되면 저장하고 초기화
+                all_problems.append((problem, 연산자))
+                problem = []
+            else:
+                # 연산자 없으면 그냥 숫자임. problem에 그냥 넣기
+                problem.append(number)
+        number = ""
+
+    # 계산 ㄱㄱ
+    total = 0
+    for nums, operation in all_problems:
+        result = eval(f" {operation} ".join(nums))
+        total += result
+
     return total
 
 
 if __name__ == "__main__":
-    part1()
+    print(f"part1: {part1()}")
+    print(f"part2: {part2()}")
